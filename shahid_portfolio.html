@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahid Shaikh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.7;
+            color: #ddd;
+            background: #1a1a2e;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #990000 0%, #cc3333 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.9);
+            margin: 0 auto 30px;
+            display: block;
+            object-fit: cover;
+            background: #fff;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.5em;
+        }
+
+        .social-icons a:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .intro {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .intro p {
+            margin-bottom: 20px;
+        }
+
+        .intro a {
+            color: #cc3333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .intro a:hover {
+            color: #ff4444;
+            text-decoration: underline;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 50px 0 30px 0;
+            color: white;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: #2a2a3e;
+            color: #999;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.15em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .timeline-meta {
+            color: #999;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            margin: 12px 0;
+            padding-left: 0;
+        }
+
+        .timeline-content ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #ccc;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .timeline-content ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #cc3333;
+            font-weight: bold;
+        }
+
+        .timeline-content p {
+            color: #ccc;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: #2a2a3e;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #cc3333;
+        }
+
+        .skill-item strong {
+            color: white;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .skill-item span {
+            color: #ccc;
+            font-size: 0.95em;
+        }
+
+        .accomplishments-list {
+            background: #2a2a3e;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #cc3333;
+            margin-top: 20px;
+        }
+
+        .accomplishments-list p {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+
+        .year-divider {
+            text-align: center;
+            color: #666;
+            font-weight: 600;
+            margin: 40px 0 30px 0;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+
+            .social-icons a {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <img src="https://via.placeholder.com/200/990000/FFFFFF?text=SS" alt="Shahid Shaikh" class="profile-pic">
+            <h1>Shahid Shaikh</h1>
+            <p class="subtitle">Backend Software Engineer @ USC</p>
+            <div class="social-icons">
+                <a href="https://github.com/shahid1999" target="_blank" title="GitHub">🔗</a>
+                <a href="https://linkedin.com/in/shahid1999" target="_blank" title="LinkedIn">💼</a>
+                <a href="mailto:shahidsh@usc.edu" title="Email">✉️</a>
+                <a href="https://ieeexplore.ieee.org" target="_blank" title="IEEE Paper">📄</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <p>
+                I'm currently pursuing my master's degree in computer science at 
+                <a href="https://www.usc.edu" target="_blank">USC</a>. Previously, I worked as a 
+                software engineer at <a href="https://www.icicibank.com" target="_blank">ICICI Bank</a> 
+                (through TCS) in Mumbai, where I engineered and deployed 200+ microservices using 
+                Java, Spring Boot, and cloud-native architectures.
+            </p>
+            <p>
+                My experience spans building REST APIs, microservices, distributed systems, and 
+                high-performance backend platforms with a focus on scalability and reliability. 
+                I work extensively with Java/Spring Boot, Python, SQL/NoSQL databases, and cloud 
+                platforms (AWS, GCP, Azure). I'm also interested in applying LLMs and machine learning 
+                to practical engineering problems.
+            </p>
+        </div>
+
+        <h2>Experience</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date-badge">Jun 2021 - Jun 2024</span>
+                <div class="timeline-content">
+                    <h3>Software Engineer</h3>
+                    <p class="timeline-meta">ICICI Bank (TCS) • Mumbai, Maharashtra</p>
+                    <ul>
+                        <li>Engineered and deployed 200+ microservices using Java, Spring Boot, and REST APIs, integrating with Oracle/PostgreSQL databases optimized with SQL queries, indexing, and partitioning</li>
+                        <li>Containerized services with Docker/Kubernetes, automated delivery with Jenkins CI/CD, and integrated SonarQube, Prometheus, and ELK monitoring</li>
+                        <li>Implemented event-driven architecture with Apache Kafka and applied Redis caching to reduce query latency by 35%</li>
+                        <li>Migrated services to AWS, leveraging EC2, S3, Lambda, API Gateway, RDS, DynamoDB, and IAM-based security</li>
+                        <li>Optimized large-scale financial data pipelines, decreasing report generation time by 40%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date-badge">Dec 2019 - Oct 2020</span>
+                <div class="timeline-content">
+                    <h3>Software Engineering Intern</h3>
+                    <p class="timeline-meta">Bolt IoT, Sparks Foundation, Kertech Infsolutions • Mumbai</p>
+                    <ul>
+                        <li>Built credit management system in Django + PostgreSQL with end-to-end SDLC involvement</li>
+                        <li>Developed backend-driven AI applications including facial recognition using Python, OpenCV, and TensorFlow/PyTorch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Projects</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date-badge">Mar 2025 - Apr 2025</span>
+                <div class="timeline-content">
+                    <h3>FACTUAL — Real-time Fact-Checking with LLM</h3>
+                    <p class="timeline-meta">Los Angeles, CA</p>
+                    <p>Designed backend APIs (Python, Node.js) for retrieval and verification, synthesizing with MongoDB + PostgreSQL for hybrid structured/unstructured data storage.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date-badge">Sep 2024 - Dec 2024</span>
+                <div class="timeline-content">
+                    <h3>Weather Forecast — Full-Stack Weather Application</h3>
+                    <p class="timeline-meta">Mumbai, Maharashtra</p>
+                    <p>Created React/TypeScript front-end with real-time data visualizations and REST APIs (Flask, PostgreSQL), reducing average response time by 20%.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date-badge">Dec 2020 - May 2021</span>
+                <div class="timeline-content">
+                    <h3><a href="https://ieeexplore.ieee.org" target="_blank" style="color: #cc3333; text-decoration: none;">Game AI using Reinforcement Learning</a></h3>
+                    <p class="timeline-meta">Mumbai, Maharashtra</p>
+                    <p>Published IEEE paper and won first prize poster presentation for developing and training deep Reinforcement Learning agents in Python (TensorFlow/PyTorch) to simulate human-like decision-making in games.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Education</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date-badge">Jun 2024 - Dec 2025</span>
+                <div class="timeline-content">
+                    <h3>University of Southern California</h3>
+                    <p class="timeline-meta">Masters of Science in Computer Science • GPA: 4.0/4.0</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date-badge">Aug 2017 - Jun 2021</span>
+                <div class="timeline-content">
+                    <h3>Mumbai University</h3>
+                    <p class="timeline-meta">Bachelors of Engineering in Computer Science • GPA: 4.0/4.0</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Technical Skills</h2>
+
+        <div class="skills-grid">
+            <div class="skill-item">
+                <strong>Languages</strong>
+                <span>Java • Python • SQL • TypeScript/JavaScript • C++ • C • C#</span>
+            </div>
+            <div class="skill-item">
+                <strong>Frameworks & Tools</strong>
+                <span>Spring Boot • React • Flask • Django • Hibernate • Node.js • Git • Jenkins • Docker • Kubernetes • GitHub Actions</span>
+            </div>
+            <div class="skill-item">
+                <strong>Cloud & Data</strong>
+                <span>AWS • GCP • Azure • PostgreSQL • Oracle • MongoDB • MySQL • Redis • DynamoDB • REST APIs • CI/CD • Agile</span>
+            </div>
+        </div>
+
+        <h2>Accomplishments</h2>
+
+        <div class="accomplishments-list">
+            <p>
+                IEEE Paper & 1st place poster: "Game AI Using Reinforcement Learning" • 
+                Star of the Month (TCS, Nov 2023) • 
+                Teaching Assistant for Algorithms at USC
+            </p>
+        </div>
+    </div>
+</body>
+</html>
